@@ -1,0 +1,18 @@
+// footer 
+footer {
+    clear: both;
+}
+footer[role=contentinfo] {
+    padding: 20px 0 70px;
+    background: $border-color;
+    clear: both;
+    div {
+        p {
+            @include font-size($font-size-smallest);
+            font-weight: $font-weight-semibold;
+            text-align: center;
+            line-height: 20px;
+            margin: 0;
+        }
+    }
+}

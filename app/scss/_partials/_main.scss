@@ -1,0 +1,77 @@
+// main
+main {
+    padding-bottom: 80px;
+    div {
+        h2 {
+            border-bottom: $border-default $border-color;
+        }
+        section {
+            @include span(9 of 12 last);
+            article {
+                h2 {
+                    color: $title-color;
+                    line-height: 60px;
+                    margin-bottom: 20px;
+                    @include font-size($font-size-default);
+                }
+                figure {
+                    position: relative;
+                    margin: 40px 0;
+                    figcaption {
+                        color: $light-color;
+                        text-align: center;
+                        @include font-size($font-size-big);
+                        font-weight: $font-weight-semibold;
+                        line-height: 45px;
+                        width: 100%;
+                        position: absolute;
+                        bottom: 0;
+                        background: $transparent-dark-color;
+                        display: block;
+                    }
+                }
+                ul {
+                    li {
+                        line-height: 15px;
+                        text-align: center;
+                        @include font-size($font-size-medium);
+                        @include span(3 of 9);
+                        height: 153px;
+                        padding: 83px 20px 30px;
+                        border: $border-default $subtitle-color;
+                        @include icon(times);
+                        position: relative;
+                        &:first-child {
+                            @include icon(check);
+                        }
+                        &:last-child {
+                            @include icon(pencil);
+                            @include span(3 of 9 last);
+                        }
+                        &:before {
+                            color: $light-color;
+                            @include font-size(30px);
+                            line-height: 54px;
+                            width: 54px;
+                            position: absolute;
+                            top: 16px;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            @include border-radius(100px);
+                            background: $title-color;
+                        }
+                    }
+                }
+                &:first-child {
+                    @include span(6 of 9);
+                }
+                &:nth-child(2) {
+                    @include span(3 of 9 last);
+                    img {
+                        @include border-radius(10px);
+                    }
+                }
+            }
+        }
+    }
+}

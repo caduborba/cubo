@@ -1,0 +1,123 @@
+// footer navigation
+.footer {
+    background: $header-color;
+    div {
+        padding-top: 40px;
+        section {
+            @include span(6 of 12);
+            h2 {
+                @include font-size($font-size-default);
+                margin-bottom: 28px;
+            }
+            nav {
+                min-height: 210px;
+                position: relative;
+                display: inline-block;
+                h3 {
+                    font-weight: $font-weight-bold;
+                    margin-bottom: 27px;
+                }
+                ul {
+                    li {
+                        @include font-size($font-size-medium);
+                        margin-bottom: 10px;
+                    }
+                }
+                > a {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                }
+            }
+            &:last-of-type {
+                @include span(4 of 12 last);
+                h2 {
+                    margin-bottom: 36px;
+                }
+                li {
+                    margin-bottom: 36px;
+                    display: inline-block;
+                    img {
+                        margin: 0 auto;
+                    }
+                    &:nth-child(even) {
+                        margin-left: 60px;
+                    }
+                    &:nth-child(4) {
+                        margin-left: 75px;
+                    }
+                }
+            }
+            &:first-child {
+                ul, span {
+                    float: left;
+                }
+                nav:first-child, span {
+                    margin-right: 70px;
+                }
+                nav {
+                    position: relative;
+                    ul {
+                        > li {
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            a {
+                                text-decoration: underline;
+                                &:hover {
+                                    text-decoration: none;
+                                }
+                            }
+                        }
+                    }
+                    &:last-child {
+                        span {
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    footer {
+        border-bottom: $border-default $border-color;
+        ul {
+            margin: 0;
+            padding: 30px 0;
+            @include span(6 of 12);
+            li {
+                line-height: 80px;
+                margin: 0;
+                padding: 0 25px;
+                display: inline-block;
+                border-left: $border-default $border-color;
+                a {
+                    @include font-size($font-size-small);
+                    line-height: 20px;
+                    display: block;
+                }
+                &:first-child {
+                    border: none;
+                }
+            }
+            &:first-child {
+                li {
+                    &:first-child {
+                        padding-left: 0;
+                    }
+                }
+            }
+            
+            &:last-child {
+                @include span(6 of 12 last);
+                ul {
+                    li {
+                        &:last-child {
+                            padding-right: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

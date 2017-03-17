@@ -1,0 +1,276 @@
+// ** mixins & functions
+
+// ** font-face
+@mixin font-face($name, $url) {
+  @font-face {
+    font-family: '#{$name}';
+    src: url('#{$url}.eot');
+    src: url('#{$url}.eot#iefix') format("embedded-opentype"),
+         url('#{$url}.ttf') format('truetype'),
+         url('#{$url}.svg##{$name}') format('svg'),
+         url('#{$url}.woff') format('woff');
+ 
+    @content;
+  }
+}
+// Usage: @include font-face('icons', '../fonts/icons/iconfont');
+
+// ************************************************************************************
+
+// ** font-awesome
+@mixin icon($name) {
+    &:before {
+        font-family: FontAwesome;
+        font-weight: normal;
+        font-style: normal;
+        display: inline-block;
+        text-decoration: inherit;
+        margin-right: 0.4em;
+    }
+    @extend .fa-#{$name};
+}
+// usage: @include icon(compass);
+
+// ************************************************************************************
+
+// ** font-size - pixel to em
+@function calculateRem($size) {
+    $remSize: $size / 16px;
+    @return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+    font-size: $size;
+    font-size: calculateRem($size);
+}
+
+// usage: @include font-size(12px);
+
+// ************************************************************************************
+
+// ** calculations
+@mixin calc($property, $expression) {
+    #{$property}: -webkit-calc(#{$expression});
+    #{$property}: -moz-calc(#{$expression});
+    #{$property}: calc(#{$expression});
+}
+
+// usage: @include calc(width, 100px - 100%);
+
+// ************************************************************************************
+
+// ** gradient
+@mixin gradient-horizontal {
+    background-image: -webkit-linear-gradient(left, $start-color $start-percent, $end-color $end-percent);
+    background-image: -o-linear-gradient(left, $start-color $start-percent, $end-color $end-percent);
+    background-image: linear-gradient(to right, $start-color $start-percent, $end-color $end-percent);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=1);
+}
+
+// usage: @include gradient-horizontal;
+
+// ************************************************************************************
+
+// ** transform
+@mixin transform($transforms) {
+	   -moz-transform: $transforms;
+	     -o-transform: $transforms;
+	    -ms-transform: $transforms;
+	-webkit-transform: $transforms;
+          transform: $transforms;
+}
+
+// usage:
+
+// ************************************************************************************
+
+// ** rotate
+@mixin rotate($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+
+// usage: @include rotate(90);
+
+// ************************************************************************************
+ 
+// ** transform origin
+@mixin transform-origin($origin) {
+    -moz-transform-origin: $origin;
+	     -o-transform-origin: $origin;
+	    -ms-transform-origin: $origin;
+	-webkit-transform-origin: $origin;
+          transform-origin: $origin;
+}
+
+// usage: @include transform-origin(top left);
+
+// ************************************************************************************
+
+// ** animation & keyframes
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }  
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }  
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+@mixin animation($str) {
+    -webkit-animation: #{$str};
+    -moz-animation: #{$str};
+    -ms-animation: #{$str};
+    -o-animation: #{$str};
+    animation: #{$str};      
+}
+
+/* usage:
+
+@include keyframes(slide-down) {
+  0% { opacity: 1; }
+  90% { opacity: 0; }
+}
+
+.element {
+  @include animation('slide-down 5s 3');
+}
+
+*/
+
+// ************************************************************************************
+
+// ** visually hide
+
+%visuallyhidden {
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip: rect(0, 0, 0, 0);
+  position: absolute;
+}
+
+/* usage
+
+<button class="mobile-navigation-trigger">
+    <b class="visually-hidden">Open the navigation</b>
+    <img src="img/mobile-navigation-icon.svg">
+</button>
+
+.visually-hidden {
+    @extend %visuallyhidden;
+}
+
+*/
+
+// ************************************************************************************
+
+// ** transitions
+@mixin transition($args...) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+// usage: @include transition(color .3s ease);
+
+// ************************************************************************************
+
+// ** opacity
+@mixin opacity($opacity) {
+    opacity: $opacity;
+    $opacity-ie: $opacity * 100;
+    filter: alpha(opacity=$opacity-ie);
+}
+
+// usage: @include opacity(0.8);
+
+// ************************************************************************************
+
+// ** clearfix
+@mixin clearfix() {
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+// usage: @include clearfix();
+
+// ************************************************************************************
+
+// ** placeholder
+@mixin placeholder {
+    ::-webkit-input-placeholder {
+        @content;
+    }
+    :-moz-placeholder {
+        @content;
+    }
+    ::-moz-placeholder {
+        @content;
+    }
+    :-ms-input-placeholder {
+        @content;
+    }
+}
+
+// usage: @include placeholder {};
+
+// ************************************************************************************
+
+// ** border-radius
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+  background-clip: padding-box;
+}
+
+// usage: @include border-radius(10px);
+
+// ************************************************************************************
+
+// ** center align
+@mixin center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// usage: @include center-box;
+
+// ************************************************************************************
+
+// ** breakpoints
+@mixin breakpoint($point) {
+    @if $point==desktop {
+        @media all and (min-width: 1024px) {
+            @content ;
+        }
+    }
+    @else if $point==tablet {
+        @media all and (min-width: 767px) {
+            @content ;
+        }
+    }
+}
+
+// usage: @include breakpoint(desktop) {};

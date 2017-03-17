@@ -1,0 +1,32 @@
+// font face
+@include font-face($font-default, '../fonts/OpenSans-Regular-webfont');
+
+* {
+    box-sizing: border-box;
+}
+
+:before, :after {
+    content: '';
+    display: block;
+}
+
+// general setting
+body {
+    font-family: $font-default;
+    header, aside[role=complementary], nav, main, .footer, footer {
+        > div {
+            @include container();
+        }
+    } 
+    a {
+        text-decoration: none;
+    }
+    p {
+        line-height: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+body, body a {
+    color: $text-color;
+}

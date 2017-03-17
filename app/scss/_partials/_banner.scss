@@ -1,0 +1,21 @@
+// banner
+nav + aside {
+    margin: 40px 0 30px 0;
+    div {
+        article {
+            margin: auto;
+            @include span(3 of 12 last);
+            img {
+                outline: 3px solid $title-color;
+                outline-offset: -3px;
+            }
+            &:first-child {
+                @include span(9 of 12);
+                img {
+                    outline: $border-default $border-color;
+                    outline-offset: 0;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,101 @@
+// navigation
+header nav, header + nav {
+    ul {
+        padding-left: 139px;
+        li {
+            display: inline-block;
+            a {
+                display: block;
+            }
+        }
+    }
+}
+
+// header
+header {
+    background: $header-color;
+    border-bottom: $border-default $border-color;
+    > div {
+        position: relative;
+        a {
+            @include font-size($font-size-big);
+        }
+        h1 a, > a {
+            position: absolute;
+        }
+        // title
+        h1 {
+            a {
+                color: $light-color;
+                text-indent: -10000px;
+                height: 101px;
+                width: 118px;
+                top: 0;
+                left: 0;
+                background: $light-color url(../images/svgs/logo.svg) bottom center no-repeat;
+                background-size: auto 92px;
+                box-shadow: 0 0 10px $shadow-color;
+                display: block;
+            }
+        }
+        // navigation
+        nav {
+            ul {
+                li {
+                    margin: 10px 0;
+                    &:nth-child(2) {
+                        border-right: $border-default $border-color;
+                        border-left: $border-default $border-color;
+                    }
+                    a {
+                        padding: 0 20px;
+                        line-height: 30px;
+                        font-weight: $font-weight-semibold;
+                    }
+                }
+            }
+        }
+        
+        // button
+        > a {
+            color: $light-color;
+            font-weight: $font-weight-bold;
+            line-height: 30px;
+            padding: 0 42px 0 23px;
+            top: 10px;
+            right: 0;
+            background: $subtitle-color;
+            @include border-radius(3px);
+            @include icon(chevron-right);
+            &:before {
+                position: absolute;
+                right: 16px;
+            }
+        }
+    }
+}
+// breadcrumbs
+header + nav {
+    ul {
+        @include font-size($font-size-smallest);
+        li {
+            line-height: 50px;
+            padding: 0 10px;
+            position: relative;
+            @include icon(chevron-right);
+            &:before {
+                @include font-size(10px);
+                position: absolute;
+                top: 1px;
+                left: -5px;
+                
+            }
+            &:first-child {
+                padding-left: 0;
+                &:before {
+                    display: none;
+                }
+            }
+        }
+    }
+}
