@@ -3468,6 +3468,9 @@ main aside ul li a {
   font-weight: 800;
   margin-bottom: 27px;
 }
+.footer div section nav ul {
+  margin: 0;
+}
 .footer div section nav ul li {
   font-size: 14px;
   font-size: 0.875rem;
@@ -3526,7 +3529,6 @@ main aside ul li a {
   border-bottom: 1px solid #c9c9c9;
 }
 .footer footer ul {
-  margin: 0;
   padding: 30px 0;
   width: 49.15254%;
   float: left;
@@ -3535,7 +3537,7 @@ main aside ul li a {
 .footer footer ul li {
   line-height: 80px;
   margin: 0;
-  padding: 0 25px;
+  padding: 0 24px;
   display: inline-block;
   border-left: 1px solid #c9c9c9;
 }
@@ -3551,12 +3553,12 @@ main aside ul li a {
 .footer footer ul:first-child li:first-child {
   padding-left: 0;
 }
-.footer footer ul:last-child {
-  width: 49.15254%;
+.footer footer ul:last-of-type {
+  width: 40.67797%;
   float: right;
   margin-right: 0;
 }
-.footer footer ul:last-child ul li:last-child {
+.footer footer ul:last-of-type li:last-child {
   padding-right: 0;
 }
 

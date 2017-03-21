@@ -18,6 +18,7 @@
                     margin-bottom: 27px;
                 }
                 ul {
+                    margin: 0;
                     li {
                         @include font-size($font-size-medium);
                         margin-bottom: 10px;
@@ -82,13 +83,12 @@
     footer {
         border-bottom: $border-default $border-color;
         ul {
-            margin: 0;
             padding: 30px 0;
             @include span(6 of 12);
             li {
                 line-height: 80px;
                 margin: 0;
-                padding: 0 25px;
+                padding: 0 24px;
                 display: inline-block;
                 border-left: $border-default $border-color;
                 a {
@@ -108,13 +108,11 @@
                 }
             }
             
-            &:last-child {
-                @include span(6 of 12 last);
-                ul {
-                    li {
-                        &:last-child {
-                            padding-right: 0;
-                        }
+            &:last-of-type {
+                @include span(5 of 12 last);
+                li {
+                    &:last-child {
+                        padding-right: 0;
                     }
                 }
             }
